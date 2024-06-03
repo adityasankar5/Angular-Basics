@@ -1,4 +1,4 @@
-# Project2
+# A Project Exploring the Basics of Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
 
