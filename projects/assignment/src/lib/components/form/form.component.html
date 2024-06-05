@@ -1,0 +1,45 @@
+<div
+  style="background-color: rgb(87, 87, 242); width: 100vw; height: 100vh"
+  class="d-flex justify-content-center"
+>
+  <form [formGroup]="formInfo">
+    <mat-card style="height: 50vh" class="card">
+      <mat-card-title>Form</mat-card-title>
+      <mat-form-field class="exmple-form">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-hint>Enter your name</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Select Country</mat-label>
+        <mat-select formControlName="country">
+          <mat-option *ngFor="let country of dropdown" [value]="country.value">
+            {{ country.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Select your Country</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Textarea</mat-label>
+        <textarea matInput formControlName="text"></textarea>
+        <mat-hint>Leave a comment</mat-hint>
+      </mat-form-field>
+      <div class="d-flex justify-content-end">
+        <button
+          (click)="onSubmit()"
+          mat-raised-button
+          color="primary"
+          class="mr-3"
+        >
+          Submit
+        </button>
+
+        <button (click)="onClick()" mat-raised-button color="primary">
+          Return
+        </button>
+      </div>
+    </mat-card>
+  </form>
+</div>
+<p>{{ showoutput }}</p>
