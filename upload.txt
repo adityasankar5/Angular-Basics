@@ -1,0 +1,34 @@
+<input type="file" (change)="onFileChange($event)">
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-file-upload',
+  templateUrl: './file-upload.component.html',
+  styleUrls: ['./file-upload.component.css']
+})
+export class FileUploadComponent {
+  selectedFile: File | null = null;
+
+  onFileChange(event: any) {
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      this.selectedFile = event.target.files[0];
+
+      // Optional: Preview the file (if it's an image)
+      if (this.selectedFile.type.match('image.*')) {
+        reader.onload = (e: any) => {
+          this.previewImageUrl = e.target.result;
+        };
+        reader.readAsDataURL(this.selectedFile);
+      }
+
+      // You can access the file properties here:
+      console.log('File Name:', this.selectedFile.name);
+      console.log('File Size:', this.selectedFile.size);
+      console.log('File Type:', this.selectedFile.type);
+    } else {
+      this.selectedFile = null;
+    }
+  }
+}
