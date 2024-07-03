@@ -1,15 +1,17 @@
-<tokens-provider [tokens]="tokens" [brand]="brand">
-  <jds-toast
-    [showClose]="showClose"
-    [title]="title"
-    [description]="description"
-    [primaryCTA]="primaryCTA"
-    [secondaryCTA]="secondaryCTA"
-    (onClose)="onClose($event)"
-    (onHover)="onHover($event)"
-    (onPrimaryClick)="onPrimaryClick($event)"
-    (onSecondaryClick)="onSecondaryClick($event)"
-  >
-    <jds-icon prefix ic="IcFavorite"></jds-icon>
-  </jds-toast>
-</tokens-provider>
+onFileChange(event: any) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const allowedExtensions = ['.csv', '.xls', '.xlsx'];
+      const extension = file.name.split('.').pop()?.toLowerCase();
+
+      if (!allowedExtensions.includes(extension)) {
+        alert('Invalid file type. Please select a CSV or Excel file.');
+        this.fileInput.nativeElement.value = ''; // Clear file selection
+        return;
+      }
+
+      // Proceed with file upload logic (if applicable)
+    }
+  }
+}
